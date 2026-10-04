@@ -1,0 +1,81 @@
+{
+  "versao": "2026-10-04",
+  "textoObrigatorio": "Antes da circulação no Brasil, o condutor deve cumprir o art. 27 do CTB e conferir os equipamentos obrigatórios aplicáveis conforme a Resolução CONTRAN nº 993/2023 e suas regulamentações. A liberação eletrônica exige verificação presencial. Em outro país, conferir também as regras locais.",
+  "combustivelRetorno": "Regra interna: repor o nível de referência do veículo ou a condição contratada. O CTB art. 27 não impõe abastecimento no retorno.",
+  "itens": [
+    {
+      "codigo": "pneus",
+      "rotulo": "Pneus e rodas",
+      "critico": true
+    },
+    {
+      "codigo": "freios",
+      "rotulo": "Freios",
+      "critico": true
+    },
+    {
+      "codigo": "iluminacao",
+      "rotulo": "Iluminação e sinalização",
+      "critico": true
+    },
+    {
+      "codigo": "visibilidade",
+      "rotulo": "Vidros, retrovisores e limpadores",
+      "critico": true
+    },
+    {
+      "codigo": "cintos",
+      "rotulo": "Cintos e ocupação segura",
+      "critico": true
+    },
+    {
+      "codigo": "equipamentos",
+      "rotulo": "Todos os equipamentos obrigatórios aplicáveis ao veículo",
+      "critico": true
+    },
+    {
+      "codigo": "combustivel",
+      "rotulo": "Combustível suficiente / autonomia do percurso",
+      "critico": true
+    },
+    {
+      "codigo": "condutor",
+      "rotulo": "Documentação e autorização do condutor",
+      "critico": true
+    },
+    {
+      "codigo": "veiculo",
+      "rotulo": "Documentação do veículo",
+      "critico": true
+    },
+    {
+      "codigo": "manutencao",
+      "rotulo": "Ausência de impedimento de manutenção",
+      "critico": true
+    },
+    {
+      "codigo": "externa",
+      "rotulo": "Condição externa / avarias",
+      "critico": false
+    },
+    {
+      "codigo": "interna",
+      "rotulo": "Condição interna / limpeza",
+      "critico": false
+    }
+  ],
+  "referencias": [
+    {
+      "nome": "CTB, art. 27",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9503compilado.htm"
+    },
+    {
+      "nome": "Resolução CONTRAN 993/2023",
+      "url": "https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-contran/resolucoes/Resolucao9932023.pdf"
+    },
+    {
+      "nome": "Índice oficial, anexos e situação das resoluções",
+      "url": "https://www.gov.br/transportes/pt-br/assuntos/transito/conteudo-Senatran/resolucoes-contran"
+    }
+  ]
+}

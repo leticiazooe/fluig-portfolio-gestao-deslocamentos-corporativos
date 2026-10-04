@@ -1,0 +1,968 @@
+{
+  "processoId": "gestaoDeslocamentosCorporativos",
+  "nome": "Gestão de Deslocamentos Corporativos",
+  "inicio": 0,
+  "encerramentos": {
+    "CONCLUIDO": 2100,
+    "CANCELADO": 2180,
+    "RECUSADO": 2190
+  },
+  "etapas": [
+    {
+      "chave": "PLANEJAMENTO",
+      "codigo": 1100,
+      "nome": "Planejamento",
+      "papel": "Solicitante",
+      "fase": "Preparação",
+      "campos": [
+        {
+          "nome": "tipoViagem",
+          "rotulo": "Tipo de deslocamento",
+          "tipo": "select",
+          "opcoes": {
+            "cidade": "Na cidade",
+            "nacional": "Nacional",
+            "internacional": "Internacional"
+          }
+        },
+        {
+          "nome": "codigoClienteOrigem",
+          "rotulo": "Cliente de origem",
+          "tipo": "catalogoClientes"
+        },
+        {
+          "nome": "codigoAreaAdministrativa",
+          "rotulo": "Área administrativa",
+          "tipo": "catalogoAreas"
+        },
+        {
+          "nome": "identificadorSolicitante",
+          "rotulo": "Solicitante",
+          "tipo": "catalogoPessoas"
+        },
+        {
+          "nome": "contatoSolicitante",
+          "rotulo": "Contato",
+          "tipo": "text"
+        },
+        {
+          "nome": "finalidadeViagem",
+          "rotulo": "Finalidade",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "origemViagem",
+          "rotulo": "Cidade de origem",
+          "tipo": "text"
+        },
+        {
+          "nome": "destinoViagem",
+          "rotulo": "Cidade de destino",
+          "tipo": "text"
+        },
+        {
+          "nome": "paisOrigem",
+          "rotulo": "País de origem (código ISO)",
+          "tipo": "text"
+        },
+        {
+          "nome": "paisDestino",
+          "rotulo": "País de destino (código ISO)",
+          "tipo": "text"
+        },
+        {
+          "nome": "inicioPrevisto",
+          "rotulo": "Início previsto",
+          "tipo": "datetime-local"
+        },
+        {
+          "nome": "fimPrevisto",
+          "rotulo": "Retorno previsto",
+          "tipo": "datetime-local"
+        },
+        {
+          "nome": "codigoCentroCusto",
+          "rotulo": "Centro de custo",
+          "tipo": "text"
+        },
+        {
+          "nome": "moedaProcesso",
+          "rotulo": "Moeda",
+          "tipo": "select",
+          "opcoes": {
+            "BRL": "BRL",
+            "USD": "USD",
+            "EUR": "EUR"
+          }
+        },
+        {
+          "nome": "taxaCambio",
+          "rotulo": "Cotação manual: 1 unidade da moeda em BRL",
+          "tipo": "text"
+        },
+        {
+          "nome": "valorAdiantamento",
+          "rotulo": "Adiantamento solicitado",
+          "tipo": "text"
+        },
+        {
+          "nome": "identificadorBeneficiario",
+          "rotulo": "Beneficiário do adiantamento / prestação",
+          "tipo": "catalogoPessoas"
+        },
+        {
+          "nome": "modalidadeVeiculo",
+          "rotulo": "Uso de veículo",
+          "tipo": "select",
+          "opcoes": {
+            "nenhum": "Sem veículo sob controle deste processo",
+            "corporativo": "Corporativo",
+            "locado": "Locado",
+            "proprio": "Próprio autorizado"
+          }
+        },
+        {
+          "nome": "codigoVeiculo",
+          "rotulo": "Veículo",
+          "tipo": "catalogoVeiculos"
+        },
+        {
+          "nome": "identificadorCondutor",
+          "rotulo": "Condutor",
+          "tipo": "catalogoCondutores"
+        },
+        {
+          "nome": "paisUsoVeiculo",
+          "rotulo": "País de uso do veículo (código ISO)",
+          "tipo": "text"
+        },
+        {
+          "nome": "contatoEmergencia",
+          "rotulo": "Contato de emergência",
+          "tipo": "text"
+        },
+        {
+          "nome": "situacaoDocumentacaoViagem",
+          "rotulo": "Conferência de documentação internacional",
+          "tipo": "select",
+          "opcoes": {
+            "pendente": "Pendente",
+            "conferida": "Conferida"
+          }
+        },
+        {
+          "nome": "referenciaDocumentacaoViagem",
+          "rotulo": "Referência da conferência internacional",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoPlanejamento",
+          "rotulo": "Observação complementar",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "acaoPlanejamento",
+          "rotulo": "Ação",
+          "tipo": "select",
+          "opcoes": {
+            "enviar": "Enviar",
+            "cancelar": "Cancelar"
+          }
+        }
+      ],
+      "campoDecisao": "acaoPlanejamento",
+      "rotas": [
+        {
+          "valor": "enviar",
+          "destino": 1200,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1101
+    },
+    {
+      "chave": "GESTOR",
+      "codigo": 1200,
+      "nome": "Análise do gestor",
+      "papel": "Gestor",
+      "fase": "Aprovações",
+      "campos": [
+        {
+          "nome": "situacaoGestor",
+          "rotulo": "Decisão",
+          "tipo": "select",
+          "opcoes": {
+            "aprovado": "Aprovado",
+            "correcao": "Solicitar ajuste",
+            "reprovado": "Não aprovado",
+            "cancelar": "Cancelar"
+          }
+        },
+        {
+          "nome": "observacaoGestor",
+          "rotulo": "Observação da decisão",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoGestor",
+      "rotas": [
+        {
+          "valor": "aprovado",
+          "destino": 1300,
+          "quando": "comServicos"
+        },
+        {
+          "valor": "aprovado",
+          "destino": 1400,
+          "quando": "semServicos"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "reprovado",
+          "destino": 2190,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1201
+    },
+    {
+      "chave": "COTACAO",
+      "codigo": 1300,
+      "nome": "Cotações",
+      "papel": "Logística",
+      "fase": "Aprovações",
+      "campos": [
+        {
+          "nome": "observacaoCotacao",
+          "rotulo": "Observação das cotações",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "acaoCotacao",
+          "rotulo": "Ação",
+          "tipo": "select",
+          "opcoes": {
+            "concluir": "Concluir cotações",
+            "correcao": "Solicitar ajuste",
+            "cancelar": "Cancelar"
+          }
+        }
+      ],
+      "campoDecisao": "acaoCotacao",
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1400,
+          "quando": "sempre"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1301
+    },
+    {
+      "chave": "LOGISTICA",
+      "codigo": 1400,
+      "nome": "Aprovação de logística",
+      "papel": "Logística",
+      "fase": "Aprovações",
+      "campos": [
+        {
+          "nome": "situacaoLogistica",
+          "rotulo": "Decisão",
+          "tipo": "select",
+          "opcoes": {
+            "aprovado": "Aprovado",
+            "correcao": "Solicitar ajuste",
+            "reprovado": "Não aprovado",
+            "cancelar": "Cancelar"
+          }
+        },
+        {
+          "nome": "observacaoLogistica",
+          "rotulo": "Observação da decisão",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoLogistica",
+      "rotas": [
+        {
+          "valor": "aprovado",
+          "destino": 1500,
+          "quando": "alcadaExecutiva"
+        },
+        {
+          "valor": "aprovado",
+          "destino": 1600,
+          "quando": "semAlcadaExecutiva"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "reprovado",
+          "destino": 2190,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1401
+    },
+    {
+      "chave": "EXECUTIVA",
+      "codigo": 1500,
+      "nome": "Liderança executiva",
+      "papel": "Liderança executiva",
+      "fase": "Aprovações",
+      "campos": [
+        {
+          "nome": "situacaoExecutiva",
+          "rotulo": "Decisão",
+          "tipo": "select",
+          "opcoes": {
+            "aprovado": "Aprovado",
+            "correcao": "Solicitar ajuste",
+            "reprovado": "Não aprovado",
+            "cancelar": "Cancelar"
+          }
+        },
+        {
+          "nome": "observacaoExecutiva",
+          "rotulo": "Observação da decisão",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoExecutiva",
+      "rotas": [
+        {
+          "valor": "aprovado",
+          "destino": 1550,
+          "quando": "alcadaPrincipal"
+        },
+        {
+          "valor": "aprovado",
+          "destino": 1600,
+          "quando": "semAlcadaPrincipal"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "reprovado",
+          "destino": 2190,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1501
+    },
+    {
+      "chave": "PRINCIPAL",
+      "codigo": 1550,
+      "nome": "Liderança executiva principal",
+      "papel": "Liderança executiva principal",
+      "fase": "Aprovações",
+      "campos": [
+        {
+          "nome": "situacaoPrincipal",
+          "rotulo": "Decisão",
+          "tipo": "select",
+          "opcoes": {
+            "aprovado": "Aprovado",
+            "correcao": "Solicitar ajuste",
+            "reprovado": "Não aprovado",
+            "cancelar": "Cancelar"
+          }
+        },
+        {
+          "nome": "observacaoPrincipal",
+          "rotulo": "Observação da decisão",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoPrincipal",
+      "rotas": [
+        {
+          "valor": "aprovado",
+          "destino": 1600,
+          "quando": "sempre"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "reprovado",
+          "destino": 2190,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1551
+    },
+    {
+      "chave": "ORGANIZACAO",
+      "codigo": 1600,
+      "nome": "Organização e reservas",
+      "papel": "Logística",
+      "fase": "Organização",
+      "campos": [
+        {
+          "nome": "situacaoDocumentacaoViagem",
+          "rotulo": "Conferência de documentação internacional",
+          "tipo": "select",
+          "opcoes": {
+            "pendente": "Pendente",
+            "conferida": "Conferida"
+          }
+        },
+        {
+          "nome": "referenciaDocumentacaoViagem",
+          "rotulo": "Referência da conferência internacional",
+          "tipo": "text"
+        },
+        {
+          "nome": "conferenciaRegrasDestino",
+          "rotulo": "Regras de circulação no país de uso conferidas",
+          "tipo": "select",
+          "opcoes": {
+            "sim": "Sim"
+          }
+        },
+        {
+          "nome": "referenciaRegrasDestino",
+          "rotulo": "Referência da conferência do país de uso",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoOrganizacao",
+          "rotulo": "Observação da organização",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "acaoOrganizacao",
+          "rotulo": "Ação",
+          "tipo": "select",
+          "opcoes": {
+            "concluir": "Confirmar organização",
+            "alterar": "Alterar planejamento e reaprovar",
+            "cancelar": "Cancelar"
+          }
+        }
+      ],
+      "campoDecisao": "acaoOrganizacao",
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1700,
+          "quando": "comAdiantamento"
+        },
+        {
+          "valor": "concluir",
+          "destino": 1800,
+          "quando": "semAdiantamentoComVeiculo"
+        },
+        {
+          "valor": "concluir",
+          "destino": 1900,
+          "quando": "semAdiantamentoSemVeiculo"
+        },
+        {
+          "valor": "alterar",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1601
+    },
+    {
+      "chave": "ADIANTAMENTO",
+      "codigo": 1700,
+      "nome": "Liberação do adiantamento",
+      "papel": "Financeiro",
+      "fase": "Organização",
+      "campos": [
+        {
+          "nome": "valorAdiantamentoLiberado",
+          "rotulo": "Valor efetivamente liberado na moeda do processo",
+          "tipo": "text"
+        },
+        {
+          "nome": "referenciaTransferencia",
+          "rotulo": "Referência da transferência",
+          "tipo": "text"
+        },
+        {
+          "nome": "dataTransferencia",
+          "rotulo": "Data da transferência",
+          "tipo": "date"
+        },
+        {
+          "nome": "situacaoAdiantamento",
+          "rotulo": "Ação",
+          "tipo": "select",
+          "opcoes": {
+            "liberado": "Liberado",
+            "correcao": "Solicitar ajuste",
+            "cancelar": "Cancelar"
+          }
+        }
+      ],
+      "campoDecisao": "situacaoAdiantamento",
+      "rotas": [
+        {
+          "valor": "liberado",
+          "destino": 1800,
+          "quando": "comVeiculo"
+        },
+        {
+          "valor": "liberado",
+          "destino": 1900,
+          "quando": "semVeiculo"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1100,
+          "quando": "sempre"
+        },
+        {
+          "valor": "cancelar",
+          "destino": 2090,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1701
+    },
+    {
+      "chave": "INSPECAO",
+      "codigo": 1800,
+      "nome": "Inspeção e liberação do veículo",
+      "papel": "Frota",
+      "fase": "Veículo",
+      "campos": [
+        {
+          "nome": "nivelCombustivelSaida",
+          "rotulo": "Nível de combustível na inspeção (%)",
+          "tipo": "number"
+        },
+        {
+          "nome": "odometroInspecao",
+          "rotulo": "Odômetro na inspeção (km)",
+          "tipo": "number"
+        },
+        {
+          "nome": "aceiteNormativo",
+          "rotulo": "Conferência presencial: CTB art. 27 e equipamentos aplicáveis da Resolução 993/2023",
+          "tipo": "select",
+          "opcoes": {
+            "sim": "Conferência realizada"
+          }
+        },
+        {
+          "nome": "observacaoInspecao",
+          "rotulo": "Observações / não conformidades",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "situacaoLiberacaoVeiculo",
+          "rotulo": "Decisão da frota",
+          "tipo": "select",
+          "opcoes": {
+            "liberado": "Liberar",
+            "bloqueado": "Bloquear para regularização"
+          }
+        }
+      ],
+      "campoDecisao": "situacaoLiberacaoVeiculo",
+      "rotas": [
+        {
+          "valor": "liberado",
+          "destino": 1850,
+          "quando": "sempre"
+        },
+        {
+          "valor": "bloqueado",
+          "destino": 1810,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1801
+    },
+    {
+      "chave": "REGULARIZACAO",
+      "codigo": 1810,
+      "nome": "Regularização antes da saída",
+      "papel": "Frota",
+      "fase": "Veículo",
+      "campos": [
+        {
+          "nome": "codigoVeiculo",
+          "rotulo": "Veículo",
+          "tipo": "catalogoVeiculos"
+        },
+        {
+          "nome": "identificadorCondutor",
+          "rotulo": "Condutor",
+          "tipo": "catalogoCondutores"
+        },
+        {
+          "nome": "referenciaRegularizacao",
+          "rotulo": "Referência da correção / substituição",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoRegularizacao",
+          "rotulo": "Descrição da regularização",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1800,
+          "quando": "sempre"
+        }
+      ]
+    },
+    {
+      "chave": "SAIDA",
+      "codigo": 1850,
+      "nome": "Confirmação de saída",
+      "papel": "Condutor",
+      "fase": "Veículo",
+      "campos": [
+        {
+          "nome": "dataHoraSaida",
+          "rotulo": "Data e hora de saída",
+          "tipo": "datetime-local"
+        },
+        {
+          "nome": "odometroSaida",
+          "rotulo": "Odômetro na saída (km)",
+          "tipo": "number"
+        },
+        {
+          "nome": "confirmacaoCondutor",
+          "rotulo": "Condutor confirma as condições antes de circular e o combustível suficiente",
+          "tipo": "select",
+          "opcoes": {
+            "sim": "Confirmo"
+          }
+        },
+        {
+          "nome": "observacaoSaida",
+          "rotulo": "Observação de saída",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1900,
+          "quando": "sempre"
+        }
+      ]
+    },
+    {
+      "chave": "RETORNO",
+      "codigo": 1900,
+      "nome": "Confirmação de retorno",
+      "papel": "Solicitante / Frota",
+      "fase": "Retorno",
+      "campos": [
+        {
+          "nome": "dataHoraRetorno",
+          "rotulo": "Data e hora de retorno",
+          "tipo": "datetime-local"
+        },
+        {
+          "nome": "odometroRetorno",
+          "rotulo": "Odômetro no retorno (km)",
+          "tipo": "number"
+        },
+        {
+          "nome": "nivelCombustivelRetorno",
+          "rotulo": "Nível de combustível no retorno (%)",
+          "tipo": "number"
+        },
+        {
+          "nome": "observacaoRetorno",
+          "rotulo": "Ocorrências / avarias no retorno",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1910,
+          "quando": "comVeiculo"
+        },
+        {
+          "valor": "concluir",
+          "destino": 1950,
+          "quando": "semVeiculo"
+        }
+      ],
+      "gateway": 1901
+    },
+    {
+      "chave": "ABASTECIMENTO",
+      "codigo": 1910,
+      "nome": "Abastecimento no retorno",
+      "papel": "Frota",
+      "fase": "Retorno",
+      "campos": [
+        {
+          "nome": "situacaoAbastecimento",
+          "rotulo": "Regularização de combustível",
+          "tipo": "select",
+          "opcoes": {
+            "abastecido": "Abastecido",
+            "dispensado": "Nível já adequado",
+            "pendente": "Pendente"
+          }
+        },
+        {
+          "nome": "nivelCombustivelRegularizado",
+          "rotulo": "Nível após conferência / abastecimento (%)",
+          "tipo": "number"
+        },
+        {
+          "nome": "observacaoAbastecimento",
+          "rotulo": "Justificativa / observação",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1920,
+          "quando": "sempre"
+        }
+      ]
+    },
+    {
+      "chave": "DEVOLUCAO",
+      "codigo": 1920,
+      "nome": "Conferência de devolução",
+      "papel": "Frota",
+      "fase": "Retorno",
+      "campos": [
+        {
+          "nome": "situacaoDevolucao",
+          "rotulo": "Decisão da frota",
+          "tipo": "select",
+          "opcoes": {
+            "disponivel": "Disponibilizar veículo",
+            "manutencao": "Encaminhar para regularização"
+          }
+        },
+        {
+          "nome": "observacaoDevolucao",
+          "rotulo": "Observação da devolução",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoDevolucao",
+      "rotas": [
+        {
+          "valor": "disponivel",
+          "destino": 1950,
+          "quando": "sempre"
+        },
+        {
+          "valor": "manutencao",
+          "destino": 1930,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 1921
+    },
+    {
+      "chave": "MANUTENCAO",
+      "codigo": 1930,
+      "nome": "Regularização após retorno",
+      "papel": "Frota",
+      "fase": "Retorno",
+      "campos": [
+        {
+          "nome": "referenciaManutencao",
+          "rotulo": "Referência da manutenção / correção",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoManutencao",
+          "rotulo": "Descrição da regularização",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1920,
+          "quando": "sempre"
+        }
+      ]
+    },
+    {
+      "chave": "CONTAS",
+      "codigo": 1950,
+      "nome": "Prestação de contas",
+      "papel": "Beneficiário",
+      "fase": "Financeiro",
+      "campos": [
+        {
+          "nome": "observacaoContas",
+          "rotulo": "Observação / justificativa quando não houve despesas",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 2000,
+          "quando": "sempre"
+        }
+      ]
+    },
+    {
+      "chave": "CONFERENCIA",
+      "codigo": 2000,
+      "nome": "Conferência financeira",
+      "papel": "Financeiro",
+      "fase": "Financeiro",
+      "campos": [
+        {
+          "nome": "situacaoConferencia",
+          "rotulo": "Decisão financeira",
+          "tipo": "select",
+          "opcoes": {
+            "aprovado": "Conferido",
+            "correcao": "Devolver para ajuste"
+          }
+        },
+        {
+          "nome": "referenciaAcerto",
+          "rotulo": "Referência do reembolso ou devolução de saldo",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoConferencia",
+          "rotulo": "Observação financeira",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": "situacaoConferencia",
+      "rotas": [
+        {
+          "valor": "aprovado",
+          "destino": 2180,
+          "quando": "cancelado"
+        },
+        {
+          "valor": "aprovado",
+          "destino": 2100,
+          "quando": "naoCancelado"
+        },
+        {
+          "valor": "correcao",
+          "destino": 1950,
+          "quando": "sempre"
+        }
+      ],
+      "gateway": 2001
+    },
+    {
+      "chave": "CANCELAMENTO",
+      "codigo": 2090,
+      "nome": "Tratamento do cancelamento",
+      "papel": "Logística / Financeiro",
+      "fase": "Financeiro",
+      "campos": [
+        {
+          "nome": "motivoCancelamento",
+          "rotulo": "Motivo do cancelamento",
+          "tipo": "textarea"
+        },
+        {
+          "nome": "referenciaCancelamento",
+          "rotulo": "Referência do tratamento das reservas e valores",
+          "tipo": "text"
+        },
+        {
+          "nome": "observacaoCancelamento",
+          "rotulo": "Taxas, estornos e valores a tratar na prestação",
+          "tipo": "textarea"
+        }
+      ],
+      "campoDecisao": null,
+      "rotas": [
+        {
+          "valor": "concluir",
+          "destino": 1950,
+          "quando": "sempre"
+        }
+      ]
+    }
+  ],
+  "moedas": [
+    "BRL",
+    "USD",
+    "EUR"
+  ],
+  "alcadasFicticias": {
+    "executivaCentavosBRL": 1000000,
+    "principalCentavosBRL": 3000000,
+    "internacionalExigeExecutiva": true
+  }
+}

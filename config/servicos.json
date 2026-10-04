@@ -1,0 +1,240 @@
+[
+  {
+    "codigoServico": "aereo",
+    "nomeServico": "Passagem aérea",
+    "tiposViagem": [
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "trechoOrigem",
+        "rotulo": "Origem do trecho",
+        "tipo": "text"
+      },
+      {
+        "nome": "trechoDestino",
+        "rotulo": "Destino do trecho",
+        "tipo": "text"
+      },
+      {
+        "nome": "horarioPreferencial",
+        "rotulo": "Horário preferencial",
+        "tipo": "text"
+      },
+      {
+        "nome": "bagagem",
+        "rotulo": "Bagagem necessária",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "hotel",
+    "nomeServico": "Reserva de hotel",
+    "tiposViagem": [
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "cidadeHotel",
+        "rotulo": "Cidade do hotel",
+        "tipo": "text"
+      },
+      {
+        "nome": "quartos",
+        "rotulo": "Quantidade de quartos",
+        "tipo": "number"
+      }
+    ]
+  },
+  {
+    "codigoServico": "locacao",
+    "nomeServico": "Aluguel de carro",
+    "tiposViagem": [
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "localRetirada",
+        "rotulo": "Local de retirada",
+        "tipo": "text"
+      },
+      {
+        "nome": "localDevolucao",
+        "rotulo": "Local de devolução",
+        "tipo": "text"
+      },
+      {
+        "nome": "categoriaCarro",
+        "rotulo": "Categoria do carro",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "traslado",
+    "nomeServico": "Traslado",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "trechoOrigem",
+        "rotulo": "Origem do trecho",
+        "tipo": "text"
+      },
+      {
+        "nome": "trechoDestino",
+        "rotulo": "Destino do trecho",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "terrestre",
+    "nomeServico": "Passagem rodoviária / ferroviária",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "trechoOrigem",
+        "rotulo": "Origem do trecho",
+        "tipo": "text"
+      },
+      {
+        "nome": "trechoDestino",
+        "rotulo": "Destino do trecho",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "alimentacao",
+    "nomeServico": "Alimentação / diárias",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "combustivel",
+    "nomeServico": "Combustível",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "pedagio",
+    "nomeServico": "Pedágio",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "estacionamento",
+    "nomeServico": "Estacionamento",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "bagagem",
+    "nomeServico": "Bagagem adicional / equipamentos",
+    "tiposViagem": [
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "bagagem",
+        "rotulo": "Materiais ou bagagem adicional",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "seguro",
+    "nomeServico": "Seguro / assistência em viagem",
+    "tiposViagem": [
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "evento",
+    "nomeServico": "Inscrição em evento",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "nomeEvento",
+        "rotulo": "Evento / treinamento",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "aplicativo",
+    "nomeServico": "Táxi / aplicativo",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": [
+      {
+        "nome": "trechoOrigem",
+        "rotulo": "Origem do trecho",
+        "tipo": "text"
+      },
+      {
+        "nome": "trechoDestino",
+        "rotulo": "Destino do trecho",
+        "tipo": "text"
+      }
+    ]
+  },
+  {
+    "codigoServico": "coletivo",
+    "nomeServico": "Transporte coletivo",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  },
+  {
+    "codigoServico": "outros",
+    "nomeServico": "Outras despesas",
+    "tiposViagem": [
+      "cidade",
+      "nacional",
+      "internacional"
+    ],
+    "campos": []
+  }
+]

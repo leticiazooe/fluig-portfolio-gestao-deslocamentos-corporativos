@@ -1,0 +1,434 @@
+[
+  {
+    "origem": 1100,
+    "gateway": 1101,
+    "campo": "acaoPlanejamento",
+    "valor": "enviar",
+    "destino": 1200,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1200"
+  },
+  {
+    "origem": 1100,
+    "gateway": 1101,
+    "campo": "acaoPlanejamento",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1200,
+    "gateway": 1201,
+    "campo": "situacaoGestor",
+    "valor": "aprovado",
+    "destino": 1300,
+    "quando": "comServicos",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1300"
+  },
+  {
+    "origem": 1200,
+    "gateway": 1201,
+    "campo": "situacaoGestor",
+    "valor": "aprovado",
+    "destino": 1400,
+    "quando": "semServicos",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1400"
+  },
+  {
+    "origem": 1200,
+    "gateway": 1201,
+    "campo": "situacaoGestor",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1200,
+    "gateway": 1201,
+    "campo": "situacaoGestor",
+    "valor": "reprovado",
+    "destino": 2190,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2190"
+  },
+  {
+    "origem": 1200,
+    "gateway": 1201,
+    "campo": "situacaoGestor",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1300,
+    "gateway": 1301,
+    "campo": "acaoCotacao",
+    "valor": "concluir",
+    "destino": 1400,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1400"
+  },
+  {
+    "origem": 1300,
+    "gateway": 1301,
+    "campo": "acaoCotacao",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1300,
+    "gateway": 1301,
+    "campo": "acaoCotacao",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1400,
+    "gateway": 1401,
+    "campo": "situacaoLogistica",
+    "valor": "aprovado",
+    "destino": 1500,
+    "quando": "alcadaExecutiva",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1500"
+  },
+  {
+    "origem": 1400,
+    "gateway": 1401,
+    "campo": "situacaoLogistica",
+    "valor": "aprovado",
+    "destino": 1600,
+    "quando": "semAlcadaExecutiva",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1600"
+  },
+  {
+    "origem": 1400,
+    "gateway": 1401,
+    "campo": "situacaoLogistica",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1400,
+    "gateway": 1401,
+    "campo": "situacaoLogistica",
+    "valor": "reprovado",
+    "destino": 2190,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2190"
+  },
+  {
+    "origem": 1400,
+    "gateway": 1401,
+    "campo": "situacaoLogistica",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1500,
+    "gateway": 1501,
+    "campo": "situacaoExecutiva",
+    "valor": "aprovado",
+    "destino": 1550,
+    "quando": "alcadaPrincipal",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1550"
+  },
+  {
+    "origem": 1500,
+    "gateway": 1501,
+    "campo": "situacaoExecutiva",
+    "valor": "aprovado",
+    "destino": 1600,
+    "quando": "semAlcadaPrincipal",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1600"
+  },
+  {
+    "origem": 1500,
+    "gateway": 1501,
+    "campo": "situacaoExecutiva",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1500,
+    "gateway": 1501,
+    "campo": "situacaoExecutiva",
+    "valor": "reprovado",
+    "destino": 2190,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2190"
+  },
+  {
+    "origem": 1500,
+    "gateway": 1501,
+    "campo": "situacaoExecutiva",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1550,
+    "gateway": 1551,
+    "campo": "situacaoPrincipal",
+    "valor": "aprovado",
+    "destino": 1600,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1600"
+  },
+  {
+    "origem": 1550,
+    "gateway": 1551,
+    "campo": "situacaoPrincipal",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1550,
+    "gateway": 1551,
+    "campo": "situacaoPrincipal",
+    "valor": "reprovado",
+    "destino": 2190,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2190"
+  },
+  {
+    "origem": 1550,
+    "gateway": 1551,
+    "campo": "situacaoPrincipal",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1600,
+    "gateway": 1601,
+    "campo": "acaoOrganizacao",
+    "valor": "concluir",
+    "destino": 1700,
+    "quando": "comAdiantamento",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1700"
+  },
+  {
+    "origem": 1600,
+    "gateway": 1601,
+    "campo": "acaoOrganizacao",
+    "valor": "concluir",
+    "destino": 1800,
+    "quando": "semAdiantamentoComVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1800"
+  },
+  {
+    "origem": 1600,
+    "gateway": 1601,
+    "campo": "acaoOrganizacao",
+    "valor": "concluir",
+    "destino": 1900,
+    "quando": "semAdiantamentoSemVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1900"
+  },
+  {
+    "origem": 1600,
+    "gateway": 1601,
+    "campo": "acaoOrganizacao",
+    "valor": "alterar",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1600,
+    "gateway": 1601,
+    "campo": "acaoOrganizacao",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1700,
+    "gateway": 1701,
+    "campo": "situacaoAdiantamento",
+    "valor": "liberado",
+    "destino": 1800,
+    "quando": "comVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1800"
+  },
+  {
+    "origem": 1700,
+    "gateway": 1701,
+    "campo": "situacaoAdiantamento",
+    "valor": "liberado",
+    "destino": 1900,
+    "quando": "semVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1900"
+  },
+  {
+    "origem": 1700,
+    "gateway": 1701,
+    "campo": "situacaoAdiantamento",
+    "valor": "correcao",
+    "destino": 1100,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1100"
+  },
+  {
+    "origem": 1700,
+    "gateway": 1701,
+    "campo": "situacaoAdiantamento",
+    "valor": "cancelar",
+    "destino": 2090,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2090"
+  },
+  {
+    "origem": 1800,
+    "gateway": 1801,
+    "campo": "situacaoLiberacaoVeiculo",
+    "valor": "liberado",
+    "destino": 1850,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1850"
+  },
+  {
+    "origem": 1800,
+    "gateway": 1801,
+    "campo": "situacaoLiberacaoVeiculo",
+    "valor": "bloqueado",
+    "destino": 1810,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1810"
+  },
+  {
+    "origem": 1810,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1800,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1800"
+  },
+  {
+    "origem": 1850,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1900,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1900"
+  },
+  {
+    "origem": 1900,
+    "gateway": 1901,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1910,
+    "quando": "comVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1910"
+  },
+  {
+    "origem": 1900,
+    "gateway": 1901,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1950,
+    "quando": "semVeiculo",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1950"
+  },
+  {
+    "origem": 1910,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1920,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1920"
+  },
+  {
+    "origem": 1920,
+    "gateway": 1921,
+    "campo": "situacaoDevolucao",
+    "valor": "disponivel",
+    "destino": 1950,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1950"
+  },
+  {
+    "origem": 1920,
+    "gateway": 1921,
+    "campo": "situacaoDevolucao",
+    "valor": "manutencao",
+    "destino": 1930,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1930"
+  },
+  {
+    "origem": 1930,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1920,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1920"
+  },
+  {
+    "origem": 1950,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 2000,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2000"
+  },
+  {
+    "origem": 2000,
+    "gateway": 2001,
+    "campo": "situacaoConferencia",
+    "valor": "aprovado",
+    "destino": 2180,
+    "quando": "cancelado",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2180"
+  },
+  {
+    "origem": 2000,
+    "gateway": 2001,
+    "campo": "situacaoConferencia",
+    "valor": "aprovado",
+    "destino": 2100,
+    "quando": "naoCancelado",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 2100"
+  },
+  {
+    "origem": 2000,
+    "gateway": 2001,
+    "campo": "situacaoConferencia",
+    "valor": "correcao",
+    "destino": 1950,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1950"
+  },
+  {
+    "origem": 2090,
+    "gateway": null,
+    "campo": null,
+    "valor": "concluir",
+    "destino": 1950,
+    "quando": "sempre",
+    "expressaoFluig": "Number(hAPI.getCardValue(\"destinoMobilidade\")) === 1950"
+  }
+]

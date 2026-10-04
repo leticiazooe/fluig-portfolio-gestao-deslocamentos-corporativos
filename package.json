@@ -1,0 +1,12 @@
+{
+  "name": "fluig-portfolio-gestao-deslocamentos-corporativos",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Case fictício de mobilidade corporativa, segurança de veículos e prestação de contas",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "generate": "node scripts/gerar.cjs",
+    "check": "node scripts/verificar.cjs",
+    "test": "node --test tests/*.test.cjs"
+  }
+}

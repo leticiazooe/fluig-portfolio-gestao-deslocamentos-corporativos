@@ -1,0 +1,180 @@
+{
+  "clientes": [
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "nomeClienteOrigem": "Cliente demonstrativo Alfa"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "nomeClienteOrigem": "Cliente demonstrativo Beta"
+    }
+  ],
+  "areas": [
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "codigoAreaAdministrativa": "MOB-ALFA-1",
+      "areaAdministrativa": "Tecnologia",
+      "identificadorResponsavelAprovacao": "MOB-GESTOR-1",
+      "responsavelAprovacao": "Gestor demonstrativo 1"
+    },
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "codigoAreaAdministrativa": "MOB-ALFA-2",
+      "areaAdministrativa": "Operações",
+      "identificadorResponsavelAprovacao": "MOB-GESTOR-2",
+      "responsavelAprovacao": "Gestor demonstrativo 2"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "codigoAreaAdministrativa": "MOB-BETA-1",
+      "areaAdministrativa": "Tecnologia",
+      "identificadorResponsavelAprovacao": "MOB-GESTOR-3",
+      "responsavelAprovacao": "Gestor demonstrativo 3"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "codigoAreaAdministrativa": "MOB-BETA-2",
+      "areaAdministrativa": "Operações",
+      "identificadorResponsavelAprovacao": "MOB-GESTOR-4",
+      "responsavelAprovacao": "Gestor demonstrativo 4"
+    }
+  ],
+  "pessoas": [
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "identificadorColaborador": "MOB-PESSOA-1",
+      "nomeColaborador": "Colaborador demonstrativo 1",
+      "emailColaborador": "mobilidade1@example.invalid"
+    },
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "identificadorColaborador": "MOB-PESSOA-2",
+      "nomeColaborador": "Colaborador demonstrativo 2",
+      "emailColaborador": "mobilidade2@example.invalid"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "identificadorColaborador": "MOB-PESSOA-3",
+      "nomeColaborador": "Colaborador demonstrativo 3",
+      "emailColaborador": "mobilidade3@example.invalid"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "identificadorColaborador": "MOB-PESSOA-4",
+      "nomeColaborador": "Colaborador demonstrativo 4",
+      "emailColaborador": "mobilidade4@example.invalid"
+    }
+  ],
+  "veiculos": [
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "codigoVeiculo": "MOB-VEICULO-1",
+      "nomeVeiculo": "Automóvel demonstrativo 1",
+      "modalidadeVeiculo": "corporativo",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "100",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    },
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "codigoVeiculo": "MOB-VEICULO-2",
+      "nomeVeiculo": "Automóvel demonstrativo 2",
+      "modalidadeVeiculo": "locado",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "75",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    },
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "codigoVeiculo": "MOB-VEICULO-3",
+      "nomeVeiculo": "Automóvel demonstrativo 3",
+      "modalidadeVeiculo": "proprio",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "100",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "codigoVeiculo": "MOB-VEICULO-4",
+      "nomeVeiculo": "Automóvel demonstrativo 4",
+      "modalidadeVeiculo": "corporativo",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "100",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "codigoVeiculo": "MOB-VEICULO-5",
+      "nomeVeiculo": "Automóvel demonstrativo 5",
+      "modalidadeVeiculo": "locado",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "75",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "codigoVeiculo": "MOB-VEICULO-6",
+      "nomeVeiculo": "Automóvel demonstrativo 6",
+      "modalidadeVeiculo": "proprio",
+      "categoriaHabilitacao": "B",
+      "capacidadeOcupantes": "5",
+      "tipoCombustivel": "gasolina",
+      "nivelReferenciaRetorno": "100",
+      "situacaoVeiculo": "disponivel",
+      "licenciamentoConferido": "sim"
+    }
+  ],
+  "condutores": [
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "identificadorCondutor": "MOB-CONDUTOR-1",
+      "nomeCondutor": "Condutor demonstrativo 1",
+      "categoriaHabilitacao": "B",
+      "validadeHabilitacao": "2032-12-31",
+      "autorizado": "sim",
+      "identificadorColaborador": "MOB-PESSOA-1"
+    },
+    {
+      "codigoClienteOrigem": "MOB-ALFA",
+      "identificadorCondutor": "MOB-CONDUTOR-2",
+      "nomeCondutor": "Condutor demonstrativo 2",
+      "categoriaHabilitacao": "B",
+      "validadeHabilitacao": "2032-12-31",
+      "autorizado": "sim",
+      "identificadorColaborador": "MOB-PESSOA-2"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "identificadorCondutor": "MOB-CONDUTOR-3",
+      "nomeCondutor": "Condutor demonstrativo 3",
+      "categoriaHabilitacao": "B",
+      "validadeHabilitacao": "2032-12-31",
+      "autorizado": "sim",
+      "identificadorColaborador": "MOB-PESSOA-3"
+    },
+    {
+      "codigoClienteOrigem": "MOB-BETA",
+      "identificadorCondutor": "MOB-CONDUTOR-4",
+      "nomeCondutor": "Condutor demonstrativo 4",
+      "categoriaHabilitacao": "B",
+      "validadeHabilitacao": "2032-12-31",
+      "autorizado": "sim",
+      "identificadorColaborador": "MOB-PESSOA-4"
+    }
+  ]
+}
