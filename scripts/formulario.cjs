@@ -8,7 +8,8 @@ module.exports=(cfg,write)=>{
   const campos=e.campos.filter(c=>{if(seen.has(c.nome))return false;seen.add(c.nome);return true;});
   let extra='';
   if(e.codigo===1800||e.codigo===1900){const prefix=e.codigo===1800?'inspecao_':'retorno_';extra=`<div data-checklist="${prefix}" class="mob-grid">${cfg.seguranca.itens.map(c=>control({nome:prefix+c.codigo,rotulo:c.rotulo+(c.critico?' · crítico':''),tipo:'select',opcoes:{conforme:'Conforme',naoConforme:'Não conforme'}})).join('')}</div>`;}
-  return `<details class="mob-panel" data-painel="${e.codigo}"${e.codigo===1100?' open':''}><summary><span>#${e.codigo}</span><strong>${e.nome}</strong><small>${e.papel}</small></summary><div class="mob-panel-body"><div class="mob-grid">${campos.map(c=>control(c)).join('')}</div>${extra}</div></details>`;
+  const cambio=e.codigo===1100?`<section class="mob-cambio" aria-labelledby="tituloCambioMob"><div><span class="mob-cambio-kicker">Câmbio</span><strong id="tituloCambioMob">Cotação atual em BRL</strong><p id="statusCambioMob">Selecione uma moeda para consultar a cotação.</p></div><div class="mob-cambio-valores"><span>Compra <b id="compraCambioMob">-</b></span><span>Venda <b id="vendaCambioMob">-</b></span><span>Variação <b id="variacaoCambioMob">-</b></span></div><button type="button" class="mob-button mob-secondary" id="atualizarCambioMob">Atualizar cotação</button><small id="fonteCambioMob">Fonte: AwesomeAPI</small></section>`:'';
+  return `<details class="mob-panel" data-painel="${e.codigo}"${e.codigo===1100?' open':''}><summary><span>#${e.codigo}</span><strong>${e.nome}</strong><small>${e.papel}</small></summary><div class="mob-panel-body"><div class="mob-grid">${campos.map(c=>control(c)).join('')}</div>${cambio}${extra}</div></details>`;
  }).join('\n');
  const sections=Object.entries(cfg.tabelas).map(([key,spec])=>{
   let input='';
