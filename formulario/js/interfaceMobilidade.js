@@ -34,6 +34,42 @@ function adicionarMob(key){
 }
 function removerLinhaMob(key,button){var code=key==='participantes'||key==='servicos'?1100:key==='despesas'?1950:1910;if(!permitidoMob([code]))return;if(window.confirm('Remover este item?')){fnWdkRemoveChild(button.closest('tr').querySelector('input'));atualizarTelaMob();avisoMob('Item removido.');}}
 function realMob(centavos){return new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(centavos/100);}
+function numeroCambioMob(v){var n=Number(String(v==null?'':v).replace(',','.'));return isFinite(n)?n:null;}
+function exibirCambioMob(info){
+ var moeda=valorMob('moedaProcesso')||'BRL',compra=numeroCambioMob(info.compra),venda=numeroCambioMob(info.venda),pct=numeroCambioMob(info.variacaoPct);
+ definirMob('fonteCambio',info.fonte||'AwesomeAPI');definirMob('dataHoraCambio',info.dataHora||'');definirMob('cotacaoCompra',compra==null?'':compra.toFixed(6));definirMob('cotacaoVenda',venda==null?'':venda.toFixed(6));definirMob('cotacaoVariacaoPct',pct==null?'':pct.toFixed(4));definirMob('cotacaoMaxima',info.maxima||'');definirMob('cotacaoMinima',info.minima||'');
+ if(moeda==='BRL'){definirMob('taxaCambio','1');compra=1;venda=1;pct=0;}
+ else if(venda!=null&&venda>0)definirMob('taxaCambio',venda.toFixed(6));
+ var fmt=function(n){return n==null?'-':new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:4,maximumFractionDigits:6}).format(n);};
+ campoMob('compraCambioMob').textContent=fmt(compra);campoMob('vendaCambioMob').textContent=fmt(venda);campoMob('variacaoCambioMob').textContent=pct==null?'-':(pct>0?'+':'')+pct.toFixed(2).replace('.',',')+'%';
+ campoMob('statusCambioMob').textContent=moeda==='BRL'?'Moeda base do processo. Conversão 1:1.':'1 '+moeda+' convertido para BRL pela cotação de venda.';
+ campoMob('fonteCambioMob').textContent='Fonte: '+(info.fonte||'AwesomeAPI')+(info.dataHora?' · '+info.dataHora:'');
+ atualizarResumoMob();
+}
+function cambioViaDatasetMob(moeda){
+ return new Promise(function(resolve,reject){
+  try{
+   if(typeof DatasetFactory==='undefined'||!DatasetFactory.getDataset)return reject(new Error('Dataset indisponível.'));
+   var cs=[DatasetFactory.createConstraint('moeda',moeda,moeda,ConstraintType.MUST)];
+   var ds=DatasetFactory.getDataset('dsMobilidadeCambio',null,cs,null),row=ds&&ds.values&&ds.values[0];
+   if(!row||row.status==='erro')return reject(new Error(row&&row.mensagem||'Cotação indisponível.'));
+   resolve({compra:row.compra,venda:row.venda,variacaoPct:row.variacaoPct,maxima:row.maxima,minima:row.minima,dataHora:row.dataHora,fonte:row.fonte||'AwesomeAPI'});
+  }catch(e){reject(e);}
+ });
+}
+function cambioViaApiMob(moeda){
+ var par=encodeURIComponent(moeda+'-BRL');
+ return fetch('https://economia.awesomeapi.com.br/json/last/'+par,{headers:{Accept:'application/json'}}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();}).then(function(data){
+  var item=data[moeda+'BRL'];if(!item)throw new Error('Par de moedas não retornado.');
+  return {compra:item.bid,venda:item.ask,variacaoPct:item.pctChange,maxima:item.high,minima:item.low,dataHora:item.create_date||'',fonte:'AwesomeAPI'};
+ });
+}
+function consultarCambioMob(){
+ var moeda=valorMob('moedaProcesso')||'BRL',btn=campoMob('atualizarCambioMob');if(btn)btn.disabled=true;
+ if(moeda==='BRL'){exibirCambioMob({compra:1,venda:1,variacaoPct:0,dataHora:new Date().toLocaleString('pt-BR'),fonte:'Conversão interna'});if(btn)btn.disabled=false;return Promise.resolve();}
+ campoMob('statusCambioMob').textContent='Consultando '+moeda+'/BRL...';
+ return cambioViaDatasetMob(moeda).catch(function(){return cambioViaApiMob(moeda);}).then(function(info){exibirCambioMob(info);avisoMob('Cotação '+moeda+'/BRL atualizada.');}).catch(function(e){campoMob('statusCambioMob').textContent='Não foi possível atualizar automaticamente. A cotação manual continua disponível.';avisoMob('Cotação automática indisponível: '+(e.message||e));}).then(function(){if(btn)btn.disabled=false;});
+}
 function atualizarResumoMob(){var d=dadosMob(),t=tabelasMob();try{campoMob('totalPrevistoMob').textContent=realMob(MobilidadeRegras.orcamento(d,t,false));}catch(e){campoMob('totalPrevistoMob').textContent='Confira o planejamento';}try{campoMob('totalCotadoMob').textContent=realMob(MobilidadeRegras.orcamento(d,t,true));}catch(e){campoMob('totalCotadoMob').textContent='Aguardando cotações';}try{var a=MobilidadeRegras.acerto(d,t,MobilidadeConfig);campoMob('reembolsoMob').textContent=realMob(a.reembolsoCentavosBRL);campoMob('devolucaoMob').textContent=realMob(a.devolucaoCentavosBRL);}catch(e){campoMob('reembolsoMob').textContent='Confira as despesas';campoMob('devolucaoMob').textContent='Confira as despesas';}}
 function atualizarTelaMob(){
  var code=codigoMob(),stage,consulta=contextoMob().modo==='VIEW';try{stage=MobilidadeRegras.etapa(code,MobilidadeConfig);}catch(e){consulta=true;}
@@ -56,6 +92,8 @@ document.addEventListener('DOMContentLoaded',function(){
  document.querySelectorAll('[data-adicionar]').forEach(function(b){b.addEventListener('click',function(){adicionarMob(b.dataset.adicionar);});});
  campoMob('codigoClienteOrigem').addEventListener('change',function(){if(!permitidoMob([1100]))return;['codigoAreaAdministrativa','identificadorSolicitante','identificadorBeneficiario','codigoVeiculo','identificadorCondutor'].forEach(function(k){definirMob(k,'');});linhasMob('participantes').forEach(function(row){fnWdkRemoveChild(row.querySelector('input'));});try{atualizarCatalogosMob();}catch(e){avisoMob(e.message);}atualizarTelaMob();avisoMob('Cliente alterado. Confira participantes, serviços e planejamento.');});
  campoMob('tipoViagem').addEventListener('change',function(){try{atualizarCatalogosMob();}catch(e){avisoMob(e.message);}atualizarTelaMob();});
+ campoMob('moedaProcesso').addEventListener('change',function(){if(permitidoMob([1100]))consultarCambioMob();});
+ if(campoMob('atualizarCambioMob'))campoMob('atualizarCambioMob').addEventListener('click',consultarCambioMob);
  campoMob('modalidadeVeiculo').addEventListener('change',function(){definirMob('codigoVeiculo','');definirMob('identificadorCondutor','');try{atualizarCatalogosMob();}catch(e){avisoMob(e.message);}atualizarTelaMob();});
  campoMob('entrada_codigoServico').addEventListener('change',detalhesServicoMob);
  campoMob('formMobilidade').addEventListener('input',function(){atualizarResumoMob();});campoMob('formMobilidade').addEventListener('change',function(){atualizarResumoMob();});campoMob('telaCheiaMob').addEventListener('click',telaCheiaMob);
