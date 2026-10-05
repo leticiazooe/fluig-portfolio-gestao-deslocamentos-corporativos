@@ -66,3 +66,9 @@ Edite as fontes em `config/`, `scripts/templates/`, `formulario/js/regrasMobilid
 - [Changelog](CHANGELOG.md)
 
 A prévia representa operações fictícias. O BPMN é um modelo independente, com `isExecutable="false"`, e não uma exportação nativa `.process` do Fluig. Os testes locais não substituem a homologação do formulário, dos papéis e dos gateways em uma instalação da plataforma. Não foram medidos ganhos de produtividade ou resultados em produção.
+
+## Cotação cambial em tempo real
+
+O planejamento suporta BRL, USD, EUR, GBP, ARS, CLP e CAD. Para moedas estrangeiras, o formulário consulta a AwesomeAPI e registra compra, venda, variação percentual, data/hora e fonte da cotação. A taxa de venda é usada como conversão para BRL no orçamento e nas alçadas.
+
+No preview, a consulta é feita diretamente pela API pública. Em ambiente Fluig, use o dataset `dsMobilidadeCambio` com um serviço REST autorizado de código `AWESOME_API_CAMBIO` apontando para `https://economia.awesomeapi.com.br`. Não grave API keys no formulário ou no JavaScript do cliente.

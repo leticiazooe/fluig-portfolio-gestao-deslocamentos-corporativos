@@ -4,3 +4,12 @@
 @media print{body{background:white}.demo-nav,.demo-actions,[data-compositor],[data-remover],#telaCheiaMob,.demo-content{display:none!important}.mob-page{padding:0;max-width:none}.mob-panel{box-shadow:none;break-inside:avoid}.mob-panel-body{display:block!important}.mob-panel>summary,.mob-hero{print-color-adjust:exact}.mob-grid{grid-template-columns:repeat(2,1fr)}.mob-table-scroll{overflow:visible}.mob-table-scroll table{min-width:0}.mob-table-scroll td .mob-control{min-width:0}.mob-norma{break-inside:avoid}}
 
 [data-detalhes-reserva]{min-width:180px;max-width:300px;margin-bottom:10px}[data-detalhes-reserva] summary{cursor:pointer;color:var(--accent)}[data-detalhes-reserva] dt{font-weight:700}[data-detalhes-reserva] dd{margin:0 0 10px;overflow-wrap:anywhere}
+
+.mob-cambio{margin-top:20px;padding:18px;border:1px solid rgba(23,107,160,.18);border-radius:14px;background:linear-gradient(135deg,rgba(23,107,160,.07),rgba(255,255,255,.94));display:grid;grid-template-columns:minmax(220px,1.4fr) repeat(3,minmax(110px,.55fr)) auto;gap:14px;align-items:center}
+.mob-cambio-kicker{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#527085;margin-bottom:4px}
+.mob-cambio strong{display:block;color:#173c54}
+.mob-cambio p,.mob-cambio small{margin:4px 0 0;color:#648092}
+.mob-cambio-valores{display:contents}
+.mob-cambio-valores span{padding:10px 12px;border-radius:10px;background:#fff;border:1px solid rgba(23,60,84,.08);font-size:12px;color:#648092}
+.mob-cambio-valores b{display:block;margin-top:4px;font-size:15px;color:#173c54}
+@media(max-width:900px){.mob-cambio{grid-template-columns:1fr 1fr}.mob-cambio-valores{display:contents}.mob-cambio>div:first-child,.mob-cambio>button,.mob-cambio>small{grid-column:1/-1}}

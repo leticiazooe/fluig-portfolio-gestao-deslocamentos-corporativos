@@ -92,14 +92,18 @@ var MobilidadeConfig={
             "rotulo": "Moeda",
             "tipo": "select",
             "opcoes": {
-              "BRL": "BRL",
-              "USD": "USD",
-              "EUR": "EUR"
+              "BRL": "Real brasileiro (BRL)",
+              "USD": "Dólar americano (USD)",
+              "EUR": "Euro (EUR)",
+              "GBP": "Libra esterlina (GBP)",
+              "ARS": "Peso argentino (ARS)",
+              "CLP": "Peso chileno (CLP)",
+              "CAD": "Dólar canadense (CAD)"
             }
           },
           {
             "nome": "taxaCambio",
-            "rotulo": "Cotação manual: 1 unidade da moeda em BRL",
+            "rotulo": "Cotação usada: 1 unidade da moeda em BRL",
             "tipo": "text"
           },
           {
@@ -960,7 +964,11 @@ var MobilidadeConfig={
     "moedas": [
       "BRL",
       "USD",
-      "EUR"
+      "EUR",
+      "GBP",
+      "ARS",
+      "CLP",
+      "CAD"
     ],
     "alcadasFicticias": {
       "executivaCentavosBRL": 1000000,
@@ -1483,7 +1491,14 @@ var MobilidadeConfig={
     "despesasEmpresaCentavosBRL",
     "adiantamentoCentavosBRL",
     "reembolsoCentavosBRL",
-    "devolucaoCentavosBRL"
+    "devolucaoCentavosBRL",
+    "fonteCambio",
+    "dataHoraCambio",
+    "cotacaoCompra",
+    "cotacaoVenda",
+    "cotacaoVariacaoPct",
+    "cotacaoMaxima",
+    "cotacaoMinima"
   ],
   "tabelas": {
     "participantes": {
